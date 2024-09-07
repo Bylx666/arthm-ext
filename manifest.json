@@ -1,0 +1,35 @@
+{
+    "manifest_version": 3,
+    "name": "绘波辅助", 
+    "version": "0.1.0",
+    "description": "绘波辅助工具, 功能包括: 1: 允许绘波使用Ctrl+T/W/N快捷键",
+    "author": "Subkey <https://space.bilibili.com/525849858>", 
+    "background": {
+        "service_worker": "src/bg.js"
+    }, 
+    "content_scripts": [{
+        "matches": ["https://dev-arthm.subkey.top/draw*", "http://localhost:3000/draw*"], 
+        "js": ["src/content.js"]
+    }], 
+    "permissions": ["tabs"], 
+    "commands": {
+        "ctrlt": {
+            "suggested_key": {
+                "default": "Ctrl+T"
+            }, 
+            "description": "Ctrl + T捕获"
+        },
+        "ctrlw": {
+            "suggested_key": {
+                "default": "Ctrl+W"
+            }, 
+            "description": "Ctrl + W捕获"
+        },
+        "ctrln": {
+            "suggested_key": {
+                "default": "Ctrl+N"
+            }, 
+            "description": "Ctrl + N捕获"
+        }
+    }
+}
