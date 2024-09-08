@@ -7,7 +7,7 @@ chrome.commands.onCommand.addListener(cmd=> {
         case "ctrln": key = "n"; break;
     }
     chrome.tabs.query({
-        url: ["https://dev-arthm.subkey.top/draw*", "http://localhost:3000/draw*"], 
+        url: ["https://dev-arthm.subkey.top*", "http://localhost:3000/draw*"], 
         active: true
     }).then(tabs=> {
         tabs[0] && chrome.tabs.sendMessage(tabs[0].id, { _ARTHM_EXT, ctrlkey: key });
