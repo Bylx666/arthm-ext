@@ -14,7 +14,7 @@
         ], 
         "js": ["src/content.js"]
     }], 
-    "permissions": ["tabs"], 
+    "permissions": ["tabs", "nativeMessaging"], 
     "commands": {
         "ctrlt": {
             "suggested_key": {

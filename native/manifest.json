@@ -1,0 +1,9 @@
+{
+    "name": "com.newt.arthmext",
+    "description": "绘波插件用本地组件, 用途包括: 1. 获取gpu内存显存等占用, 2. 读取文件夹内容",
+    "path": "D:\\code\\js\\arthm-ext\\native\\target\\debug\\arthm-ext.exe",
+    "type": "stdio",
+    "allowed_origins": [
+        "chrome-extension://jminmndoinijcdmfpjmioiplffanhfch/"
+    ]
+}

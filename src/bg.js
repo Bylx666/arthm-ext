@@ -1,5 +1,16 @@
+
 const _ARTHM_EXT = 19198;
+
+let port = chrome.runtime.connectNative("com.newt.arthmext");
+port.onMessage.addListener(o=> {
+    console.log(o);
+});
+port.onDisconnect.addListener(function() {
+    console.log("已断开");
+})
+
 chrome.commands.onCommand.addListener(cmd=> {
+    console.log(port);
     let key;
     switch (cmd) {
         case "ctrlt": key = "t"; break;
