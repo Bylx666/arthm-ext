@@ -8,7 +8,10 @@
         "service_worker": "src/bg.js"
     }, 
     "content_scripts": [{
-        "matches": ["https://dev-arthm.subkey.top*", "http://localhost:3000/draw*"], 
+        "matches": [
+            "https://dev-arthm.subkey.top/*", 
+            "http://localhost:3000/draw*"
+        ], 
         "js": ["src/content.js"]
     }], 
     "permissions": ["tabs"], 
