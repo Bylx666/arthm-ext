@@ -1,29 +1,47 @@
 
 const _ARTHM_EXT = 19198;
 
-let port = chrome.runtime.connectNative("com.newt.arthmext");
-port.onMessage.addListener(o=> {
-    console.log(o);
-});
-port.onDisconnect.addListener(function() {
-    console.log("已断开");
-})
-
-chrome.commands.onCommand.addListener(cmd=> {
-    console.log(port);
-    let key;
-    switch (cmd) {
-        case "ctrlt": key = "t"; break;
-        case "ctrlw": key = "w"; break;
-        case "ctrln": key = "n"; break;
-    }
+function post_to_content(o) {
     chrome.tabs.query({
         url: [
-            "https://dev-arthm.subkey.top/*", 
+            "https://devtex.subkey.top/*", 
+            "https://arthm.top/*", 
             "http://localhost:3000/draw*"
         ], 
         active: true
     }).then(tabs=> {
-        tabs[0] && chrome.tabs.sendMessage(tabs[0].id, { _ARTHM_EXT, ctrlkey: key });
+        tabs[0] && chrome.tabs.sendMessage(tabs[0].id, Object.assign({ _ARTHM_EXT }, o));
     });
+}
+
+let port = chrome.runtime.connectNative("com.newt.arthmext");
+port.onMessage.addListener(o=> {
+    post_to_content(o);
+});
+port.onDisconnect.addListener(function() {
+    console.log("已断开");
+});
+
+chrome.runtime.onMessage.addListener(dat=> {
+    switch (dat.type) {
+        case "refer-open":
+            port.postMessage(['a']);
+            break;
+    }
+});
+
+chrome.commands.onCommand.addListener(cmd=> {
+    let key;
+    switch (cmd) {
+        case "ctrlt":
+            key = "t";
+            break;
+        case "ctrlw":
+            key = "w";
+            break;
+        case "ctrln":
+            key = "n";
+            break;
+    }
+    post_to_content({ type: "ctrl", key });
 });

@@ -9,7 +9,8 @@
     }, 
     "content_scripts": [{
         "matches": [
-            "https://dev-arthm.subkey.top/*", 
+            "https://devtex.subkey.top/*", 
+            "https://arthm.top/*", 
             "http://localhost:3000/draw*"
         ], 
         "js": ["src/content.js"]
@@ -18,21 +19,24 @@
     "commands": {
         "ctrlt": {
             "suggested_key": {
-                "default": "Ctrl+T"
+                "default": "Ctrl+T", 
+                "windows": "Ctrl+T"
             }, 
-            "description": "Ctrl + T捕获"
+            "description": "Ctrl + T 捕获"
         },
         "ctrlw": {
             "suggested_key": {
-                "default": "Ctrl+W"
+                "default": "Ctrl+W",
+                "windows": "Ctrl+W"
             }, 
-            "description": "Ctrl + W捕获"
+            "description": "Ctrl + W 捕获"
         },
         "ctrln": {
             "suggested_key": {
-                "default": "Ctrl+N"
+                "default": "Ctrl+N",
+                "windows": "Ctrl+N"
             }, 
-            "description": "Ctrl + N捕获"
+            "description": "Ctrl + N 捕获"
         }
     }
 }
