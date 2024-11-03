@@ -1,6 +1,4 @@
 
-const _ARTHM_EXT = 19198;
-
 function post_to_content(o) {
     chrome.tabs.query({
         url: [
@@ -10,22 +8,27 @@ function post_to_content(o) {
         ], 
         active: true
     }).then(tabs=> {
-        tabs[0] && chrome.tabs.sendMessage(tabs[0].id, Object.assign({ _ARTHM_EXT }, o));
+        tabs[0] && chrome.tabs.sendMessage(tabs[0].id, o);
     });
+}
+
+function post_to_port(data) {
+    try {
+        port.postMessage(data);
+    }catch {
+        post_to_content({ type: "error", error: "插件本地程序断联, 请重启插件" });
+    }
 }
 
 let port = chrome.runtime.connectNative("com.newt.arthmext");
 port.onMessage.addListener(o=> {
     post_to_content(o);
 });
-port.onDisconnect.addListener(function() {
-    console.log("已断开");
-});
 
 chrome.runtime.onMessage.addListener(dat=> {
     switch (dat.type) {
         case "refer-open":
-            port.postMessage(['a']);
+            post_to_port(["a"]);
             break;
     }
 });

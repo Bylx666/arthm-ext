@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "绘波辅助", 
     "version": "0.1.0",
-    "description": "绘波辅助工具, 功能包括: 1: 允许绘波使用Ctrl+T/W/N快捷键",
+    "description": "绘波辅助工具, 功能包括: 1. 允许绘波使用Ctrl+T/W/N快捷键 2. 允许绘波画板调用可全屏取色的图片参考器",
     "author": "Subkey <https://space.bilibili.com/525849858>", 
     "background": {
         "service_worker": "src/bg.js"

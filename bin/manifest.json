@@ -1,0 +1,9 @@
+{
+        "name": "com.newt.arthmext",
+        "description": "绘波插件用本地组件, 用途包括: 1. Arthm Refer图片参考器 2. 获取gpu内存显存等占用(TODO)",
+        "path": ".\\arthm-ext.exe",
+        "type": "stdio",
+        "allowed_origins": [
+            "chrome-extension://hdjifkhonmgniofnblcgbdmlcjepekeo/"
+        ]
+    }
